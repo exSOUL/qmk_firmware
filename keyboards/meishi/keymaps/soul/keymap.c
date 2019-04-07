@@ -17,7 +17,7 @@
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [0] = LAYOUT( /* Base */
-  M(0),  LCTL(KC_X),  LCTL(KC_C), LCTL(KC_V) \
+  M(0),  M(1),  M(2), KC_ENT \
 ),
 };
 
@@ -45,17 +45,17 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt) {
     switch(id) {
     case 0: // id=0のマクロ定義
         if (record->event.pressed) {
-            SEND_STRING("Hello"); // keydown時の動作('Hello'と入力)
+            SEND_STRING("(bow)"); // keydown時の動作('Hello'と入力)
         }
         break;
     case 1: // id=0のマクロ定義
         if (record->event.pressed) {
-            SEND_STRING("Hello");
+            SEND_STRING("(roger)");
         }
         break;
     case 2: // id=0のマクロ定義
         if (record->event.pressed) {
-            SEND_STRING("Hello");
+            SEND_STRING("(cracker)");
         }
         break;
     case 3: // id=0のマクロ定義
