@@ -15,9 +15,11 @@
  */
 #include QMK_KEYBOARD_H
 
+// make meishi:soul:avrdude
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [0] = LAYOUT( /* Base */
-  M(0),  M(1),  M(2), LCTL(KC_ENT) \
+ //  M(0),  M(1),  M(2), MEH(KC_F1)
+ MEH(KC_1), MEH(KC_2), MEH(KC_3), MEH(KC_4) \
 ),
 };
 
@@ -45,17 +47,22 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt) {
     switch(id) {
     case 0: // id=0のマクロ定義
         if (record->event.pressed) {
-            SEND_STRING("(bow)"); // keydown時の動作('Hello'と入力)
+            // 三連お辞儀エモーティコン + 日本語入力のときに英字に変換するF10
+            // FIXME: そもそもIMEのの状態によらず英数字で入力できる方法を探す
+            SEND_STRING("(bow)" SS_TAP(X_F10));
+            // MEH(KC_F2);
         }
         break;
     case 1: // id=0のマクロ定義
         if (record->event.pressed) {
-            SEND_STRING("(roger)");
+            SEND_STRING("(roger)" SS_TAP(X_F10));
+            // MEH(KC_F3);
         }
         break;
     case 2: // id=0のマクロ定義
         if (record->event.pressed) {
-            SEND_STRING("(cracker)");
+            // MEH(KC_F4);
+            SEND_STRING("(cracker)" SS_TAP(X_F10));
         }
         break;
     case 3: // id=0のマクロ定義
